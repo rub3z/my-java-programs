@@ -1,0 +1,42 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.HashSet;
+
+class Main {
+   public static void main(String[] args) throws IOException {
+      BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+      HashSet<Integer> nums = new HashSet<>();
+      int caseNum = 0;
+      boolean happiness = false;
+      String line;
+      while((line = br.readLine()) != null) {
+         int num = Integer.parseInt(line);
+         happiness = isHappy(num, num, 0, nums);
+         nums.clear();
+         if (caseNum != 0) {
+            System.out.println("Case #" + caseNum + ": " + num + " is " +
+             (happiness ? "a Happy" : "an Unhappy") + " number.");
+         }
+         caseNum++;
+      }
+   }
+
+
+   static boolean isHappy (int num, int testNum, int i, HashSet<Integer> arr) {
+      int sum = 0;
+      if (num == 1) {
+         return true;
+      }
+      else if(!arr.add(num)){
+         return false;
+      }
+      else {
+         while (num != 0) {
+            sum += (num % 10) * (num % 10);
+            num = num / 10;
+         }
+         return isHappy(sum, testNum, i + 1, arr);
+      }
+   }
+}

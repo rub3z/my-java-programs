@@ -1,0 +1,26 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.math.BigInteger;
+import java.util.ArrayList;
+
+class Main {
+
+   public static void main(String[] args) throws IOException {
+      BufferedReader bigints = new BufferedReader(
+       new InputStreamReader(System.in));
+      
+      String line;
+      ArrayList<BigInteger> bigs = new ArrayList<>();
+      
+      while(!(line = bigints.readLine()).equals("0")) {
+         bigs.add(new BigInteger(line));
+      }
+      
+      BigInteger ans = new BigInteger("0");
+      
+      for(BigInteger b : bigs) ans = ans.add(b);
+      
+      System.out.println(ans);
+   }  
+}

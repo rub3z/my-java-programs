@@ -1,0 +1,80 @@
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+
+class Main {
+
+public static void main(String[] args) throws IOException {
+      BufferedReader br = new BufferedReader(
+       new InputStreamReader(System.in));
+      
+      int cases = Integer.parseInt(br.readLine());
+      
+      int caseNum = 0;
+      
+      while(caseNum < cases) {
+         System.out.print("Case " + (caseNum+1) + ": ");
+         int numrung = Integer.parseInt(br.readLine());
+         ArrayList<Integer> nums = new ArrayList<>();
+         
+         String[] rungs = br.readLine().split(" ");
+         
+         nums.add(Integer.parseInt(rungs[0]));
+         for(int i = 1; i < rungs.length; i++)
+            nums.add(
+             (Integer.parseInt(rungs[i]))-(Integer.parseInt(rungs[i - 1])));
+         
+         int max = 0;
+         int start = 0;
+         for (int i = 0; i < nums.size(); i++) {
+            if(nums.get(i) > max) {
+               max = nums.get(i);
+               start = i;
+            }
+         }
+         
+         for(int i = 0; i < start; i++)
+            nums.remove(0);
+         
+         nums.forEach(s -> {
+            System.out.print(s + " ");
+         });
+         
+         System.out.println("");
+         int startStrength = max;
+         boolean done = false;
+         int k;
+         boolean enoughStrength;
+         while(!done)
+         {
+            enoughStrength = true;
+            k = startStrength;
+            for(int i = 0; i < nums.size() && enoughStrength; i++)
+            {
+               if(k < nums.get(i))
+               {
+                  enoughStrength = false;
+               }
+               else if(k == nums.get(i))
+               {
+                  k--;
+               }
+            }
+            if(k >= 0 && enoughStrength)
+            {
+               done = true;
+            }
+            else{
+               startStrength++;
+            }
+         }
+         System.out.println(startStrength);
+         
+         System.out.println();
+         caseNum++;
+      }
+   }
+}

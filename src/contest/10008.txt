@@ -1,0 +1,68 @@
+10008: What's Cryptanalysis?
+
+package main;
+
+import java.util.Scanner;
+
+public class Main {
+
+   public static void main(String[] args) {
+      Scanner in = new Scanner(System.in);
+      
+      int num = Integer.parseInt(in.nextLine());
+      int i = 0;
+      String input = "";
+      while (i < num) {
+         input += in.nextLine();
+         i++;
+      }
+      
+      input = input.toUpperCase();
+      char[] alpha = {'A','B','C','D','E','F','G','H',
+         'I','J','K','L','M','N','O','P','Q','R','S','T','U',
+         'V','W','X','Y','Z'};
+      int[] beta = new int[26];
+      
+      for (int j = 0; j<alpha.length;j++) {
+         for(int k = 0; k<input.length();k++){
+            if(alpha[j] == input.charAt(k)){
+               beta[j] +=1;
+            }
+         }
+      }
+      
+      int temp;
+      char tempChar;
+      for( int a = 0; a < beta.length - 1; a++ )
+      {
+         for( int b = a; b < beta.length; b++  )
+         {
+            if(beta[a] < beta[b])
+            {
+               temp = beta[a];
+               beta[a] = beta[b];
+               beta[b] = temp;
+               tempChar = alpha[a];
+               alpha[a] = alpha[b];
+               alpha[b] = tempChar;
+            } else if(beta[a] == beta[b]){
+               if(alpha[a]>alpha[b]){
+                  temp = beta[a];
+                  beta[a] = beta[b];
+                  beta[b] = temp;
+                  tempChar = alpha[a];
+                  alpha[a] = alpha[b];
+                  alpha[b] = tempChar;
+               }
+            }
+            
+         }
+      }
+      
+      for (int n = 0; n < beta.length; n++) {
+         if(beta[n] != 0)
+            System.out.println(alpha[n] + " " + beta[n]);
+      }
+      
+   }   
+}

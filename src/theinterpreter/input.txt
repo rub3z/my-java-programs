@@ -1,0 +1,1 @@
+prog { vars ( int rx ; ) rx = 7 ; } $

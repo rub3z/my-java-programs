@@ -1,0 +1,37 @@
+package com.company;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.math.BigDecimal;
+
+public class Main {
+
+    public static void main(String[] args) {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        br.lines().forEach(line -> {
+           String[] nums = line.split(" ");
+//           BigDecimal num = new BigDecimal(nums[0]);
+//           BigDecimal den = new BigDecimal(nums[1]);
+//
+//           System.out.println(num + "/" + den + " = " + num.divide(den, 50, 0) );
+//           double a = Double.parseDouble(nums[0]);
+//           double b = Double.parseDouble(nums[1]);
+            int a = Integer.parseInt(nums[0]);
+           int b = Integer.parseInt(nums[1]);
+            int display, rem;
+           //int[] list = new int[50];
+           //list[0] = a/b;
+           //if(list[0] == 0)
+
+           //a = (a%b)*10;
+
+           while(1==1)
+           {
+              display = a/b;
+              rem = a%b;
+              a = rem * 10;
+              system.out.println(display);
+           }
+        });
+    }
+}

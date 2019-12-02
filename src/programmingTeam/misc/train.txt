@@ -1,0 +1,46 @@
+package com.company;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+
+public class Main {
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+       String line;
+       while((line = br.readLine()) != null) {
+          if (line.equals("1")) {
+             while (br.readLine().equals("1")) {
+                System.out.println("Yes");
+             }
+          } else if (line.length() == 1) {
+             int n = Integer.parseInt(line);
+             if (line.length() != 1) {
+                String[] nums = line.split(" ");
+                ArrayList<Integer> train = new ArrayList<Integer>();
+                for (String i : nums)
+                   train.add(Integer.parseInt(i));
+                boolean yes = true;
+                if (train.get(0) > train.get(1)) {
+                   for (int i = 0; i < train.size() - 1; i++) {
+                      if (train.get(i) < train.get(i + 1)) {
+                         yes = false;
+                         break;
+                      }
+                   }
+                } else {
+                   for (int i = 0; i < train.size() - 1; i++) {
+                      if (train.get(i) > train.get(i + 1)) {
+                         yes = false;
+                         break;
+                      }
+                   }
+                }
+                System.out.println(yes ? "Yes" : "No");
+             }
+          }
+       }
+    }
+}

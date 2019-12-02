@@ -1,0 +1,21 @@
+import java.util.Scanner;
+
+public class Main {
+
+   /**
+    * @param args the command line arguments
+    */
+   public static void main(String[] args) {
+      Scanner in = new Scanner(System.in);
+      String size = in.nextLine();
+      while (size != "0 0 0") {
+         String[] xAB = size.split(" ");
+         int x = Integer.parseInt(xAB[0]);
+         int a = Integer.parseInt(xAB[0]);
+         int b = Integer.parseInt(xAB[0]);
+         int result = x*(b/a);
+         System.out.println(result);
+         size = in.nextLine();
+      }
+   }   
+}

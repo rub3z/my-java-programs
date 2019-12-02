@@ -1,0 +1,6 @@
+Pgm = kwdprog brace1 Vars Stmt brace2
+Vars = kwdvars parens1 Decl parens2
+Decl = 'int' id semi
+Stmt = Stasgn | Stprint
+Stasgn = id equal int semi
+Stprint = kprint parens1 id parens2 semi

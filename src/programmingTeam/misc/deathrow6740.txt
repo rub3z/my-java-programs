@@ -1,0 +1,37 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+// death row 6740
+class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        String line;
+        br.readLine();
+
+        while ((line = br.readLine()) != null) {
+            int n = Integer.parseInt(line);
+            
+            int s = 0;
+            int x = 0;
+            for (int i = 0; n > 0; i++) {
+                s = sieve(n);
+                if (s == 1) n--;
+                else n = s;
+                x = i;
+            }
+            System.out.println(x + 1);
+        }
+    }
+
+    static int sieve (int n) {
+        int x = 1;
+        for (int i = 2; i <= Math.sqrt((double) n); i++) {
+            if (n % i == 0) {
+                x = i;
+                break;
+            }
+        }
+        return x;
+    }
+}
